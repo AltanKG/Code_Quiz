@@ -1,0 +1,66 @@
+/* Universal selector */
+* {
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* HEADER CONTENT */
+/* Creates flex container and orients items */
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+/* Sets color to blue  */
+#viewHighscores {
+  color: blue;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+}
+/* On hover over text, changes cursor and text color  */
+#viewHighscores:hover {
+  color: darkblue;
+  cursor: pointer;
+}
+
+/* MAIN BODY CONTENT  */
+/* Creates a flex container, sets size, and orients  */
+main {
+  display: block flex;
+  height: 50%;
+  width: 50%;
+  margin: auto;
+  margin-top: 80px;
+  text-align: center;
+}
+/* Sets margin between items in main  */
+main h2,
+main p {
+  margin: 15px 0;
+}
+/* Sets font style */
+main h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+/* Creates a flex container and orients items  */
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+/* Sets button style  */
+.btn {
+  color: white;
+  background: purple;
+  border-radius: 7px;
+  font-size: 1rem;
+  margin-left: 35px;
+}
+/* When hovered over, button style changes  */
+.btn:hover {
+  opacity: 50%;
+  cursor: pointer;
+}

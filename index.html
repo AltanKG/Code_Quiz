@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header id = "header">
+        <button id = "viewHighscores">View Highscores</button>
+        <time>Time: <span id = "time"></span></time>
+    </header>
+
+    <main>
+        <section id = "homepage">
+            <h2>Coding Quiz Challenge</h2>
+            <p>
+            Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize score/time by ten seconds!
+            </p>
+            <button class = "btn" id = "startQuiz">Start Quiz</button>
+        </section>
+
+        <section class="section" id="question1">
+            <h2>Commonly used data types DO NOT include: </h2>
+            <button class="wrongAns btn">Strings</button>
+            <button class="wrongAns btn">Booleans</button>
+            <button class="right btn next1">Alerts</button>
+            <button class="wrongAns btn">Numbers</button>
+        </section>
+
+        <section class="section" id="question2">
+            <h2>The condition in an if / else statement is enclosed within ___________. </h2>
+            <button class="btn next2">Parenthesis</button>
+            <button class="wrongAns btn">Quotes</button>
+            <button class="wrongAns btn">Curly Brackets</button>
+            <button class="wrongAns btn">Square Brackets</button>
+        </section>
+
+         <section class="section" id="question3">
+            <h2>Arrays in javascript can be used to store _______________. </h2>
+            <button class="wrongAns btn">Numbers ands strings</button>
+            <button class="wrongAns btn">Other arrays</button>
+            <button class="wrongAns btn">Booleans</button>
+            <button class="btn next3">All of the above</button>
+        </section>
+
+        <section class="section" id="question4">
+            <h2>String values must be enclosed within ________ when being assigned to variables.</h2>
+            <button class="btn next4">Quotes</button>
+            <button class="wrongAns btn">Commas</button>
+            <button class="wrongAns btn">Parenthesis</button>
+            <button class="wrongAns btn">Curly brackets</button>
+        </section>
+
+        <section class="section" id="question5">
+            <h2>A very useful tool used during development and debugging for printing content to the debugger is:</h2>
+            <button class="btn next5">Console.log</button>
+            <button class="wrongAns btn">Javascript</button>
+            <button class="wrongAns btn">For loops</button>
+            <button class="wrongAns btn">Terminal/bash</button>
+        </section>
+
+        <section class="section" id = "allDone">
+            <h2>All done!</h2>
+            <p>Your final score is <span id="score"></span></p>
+            <span>Enter Initials:</span>
+            <input type="text" id="userInput" placeholder="Initials">
+            <span><button class = "submitBtn btn">Submit</button></span>
+        </section>
+
+        <section class="section" id="highscores">
+            <h2>Highscores</h2>
+            <ol>
+                <li>1. <span id="first"></span></li>
+                <!-- <li>2. <span id="second"></span></li> -->
+            </ol>
+            <button class="btn" id="goBackBtn">Go Back</button>
+            <button class="btn" id="clearScoresBtn">Clear Highscores</button>
+        </section>
+    </main>
+    
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
