@@ -64,11 +64,11 @@ main h2 {
   opacity: 50%;
   cursor: pointer;
 }
-
+/* Oreinting lists  */
 #scoreBoard {
   display: flex;
 }
-
+/* Setting ordered list style  */
 ol {
   list-style-type: decimal;
   margin-right: 10px;

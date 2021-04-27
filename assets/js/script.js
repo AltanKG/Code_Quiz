@@ -28,6 +28,7 @@ var scoreList = document.getElementById("scoreList");
 var pointList = document.getElementById("pointList");
 var deleteItem = document.getElementsByClassName("delete");
 
+// Hiding all sections except homepage section
 question1.style.display = "none";
 question2.style.display = "none";
 question3.style.display = "none";
@@ -36,6 +37,7 @@ question5.style.display = "none";
 allDone.style.display = "none";
 highscores.style.display = "none";
 
+// When clicked allows user to view scores page only
 viewHighscores.addEventListener("click", function () {
   header.style.display = "none";
   homepage.style.display = "none";
@@ -48,19 +50,21 @@ viewHighscores.addEventListener("click", function () {
   question5.style.display = "none";
 });
 
+// When clicked starts the quiz
 startQuizBtn.addEventListener("click", function () {
   homepage.style.display = "none";
   question1.style.display = "flex";
 
+  // Timer starts with the quiz
   timeLeft = 75;
   var timeInterval = setInterval(function () {
     timeLeft--;
     countDown.textContent = timeLeft;
 
+    // Hides all pages except done page and stops timer
     if (timeLeft === 0 || timeLeft < 0) {
       clearInterval(timeInterval);
       countDown.textContent = "";
-
       question1.style.display = "none";
       question2.style.display = "none";
       question3.style.display = "none";
@@ -69,6 +73,7 @@ startQuizBtn.addEventListener("click", function () {
       highscores.style.display = "none";
       allDone.style.display = "flex";
     } else if (true) {
+      // Clears time interval on these pages
       nextQn5.addEventListener("click", function () {
         clearInterval(timeInterval);
         countDown.textContent = "";
@@ -81,12 +86,14 @@ startQuizBtn.addEventListener("click", function () {
   }, 1000);
 });
 
+// Deducts time each time wrong answer is chosen using a loop and function
 for (i = 0; i < timeDeduction.length; i++) {
   timeDeduction[i].addEventListener("click", function () {
     onClick();
   });
 }
 
+// Function for deducting time
 function onClick() {
   timeLeft -= 15;
   countDown.textContent = timeLeft;
@@ -96,6 +103,7 @@ function onClick() {
   }
 }
 
+// For loop for adding points
 for (i = 0; i < nextQn.length; i++) {
   nextQn[i].addEventListener("click", function () {
     scoreInt += 5;
@@ -103,6 +111,7 @@ for (i = 0; i < nextQn.length; i++) {
   });
 }
 
+// For loop for subtracting points
 for (i = 0; i < timeDeduction.length; i++) {
   timeDeduction[i].addEventListener("click", function () {
     scoreInt -= 3;
@@ -110,26 +119,31 @@ for (i = 0; i < timeDeduction.length; i++) {
   });
 }
 
+// Makes Q2 page apear and hides previous question
 nextQn1.addEventListener("click", function () {
   question1.style.display = "none";
   question2.style.display = "flex";
 });
 
+// Makes Q3 page apear and hides previous question
 nextQn2.addEventListener("click", function () {
   question2.style.display = "none";
   question3.style.display = "flex";
 });
 
+// Makes Q4 page apear and hides previous question
 nextQn3.addEventListener("click", function () {
   question3.style.display = "none";
   question4.style.display = "flex";
 });
 
+// Makes Q5 page apear and hides previous question
 nextQn4.addEventListener("click", function () {
   question4.style.display = "none";
   question5.style.display = "flex";
 });
 
+// Shows all done page; hides all else
 nextQn5.addEventListener("click", function () {
   question5.style.display = "none";
   allDone.style.display = "block";
@@ -137,16 +151,19 @@ nextQn5.addEventListener("click", function () {
   scorePlayer.innerHTML = scoreInt;
 });
 
+// Submits names to highscore list
 submitBtn.addEventListener("click", function () {
   allDone.style.display = "none";
   header.style.display = "none";
   highscores.style.display = "flex";
 
+  // creates a list item and adds it to list for each player name
   var listItem = document.createElement("li");
   listItem.className = "delete";
   listItem.textContent = userInput.value;
   scoreList.appendChild(listItem);
 
+  // creates a list item and adds it to list for each player score
   var listItem2 = document.createElement("li");
   listItem2.className = "delete";
   listItem2.textContent = scoreInt;
@@ -155,6 +172,7 @@ submitBtn.addEventListener("click", function () {
   userInput.value = "";
 });
 
+// Clears highscore list
 clearScoresBtn.addEventListener("click", function () {
   localStorage.clear();
 
@@ -163,6 +181,7 @@ clearScoresBtn.addEventListener("click", function () {
   }
 });
 
+// Takes user back to homepage
 goBackBtn.addEventListener("click", function () {
   header.style.display = "flex";
   homepage.style.display = "block";
