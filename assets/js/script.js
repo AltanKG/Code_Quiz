@@ -21,9 +21,12 @@ var clearScoresBtn = document.getElementById("clearScoresBtn");
 var viewHighscores = document.getElementById("viewHighscores");
 var header = document.getElementById("header");
 var timeDeduction = document.querySelectorAll(".wrongAns");
-var score = document.getElementById("score");
-var scoreVal = score.textContent;
-scoreVal = 0;
+var scoreVal = document.getElementById("score");
+var scorePlayer = document.createElement("span");
+var scoreInt = 0;
+var scoreList = document.getElementById("scoreList");
+var pointList = document.getElementById("pointList");
+var deleteItem = document.getElementsByClassName("delete");
 
 question1.style.display = "none";
 question2.style.display = "none";
@@ -38,6 +41,11 @@ viewHighscores.addEventListener("click", function () {
   homepage.style.display = "none";
   highscores.style.display = "flex";
   allDone.style.display = "none";
+  question1.style.display = "none";
+  question2.style.display = "none";
+  question3.style.display = "none";
+  question4.style.display = "none";
+  question5.style.display = "none";
 });
 
 startQuizBtn.addEventListener("click", function () {
@@ -47,11 +55,11 @@ startQuizBtn.addEventListener("click", function () {
   timeLeft = 75;
   var timeInterval = setInterval(function () {
     timeLeft--;
-    time.textContent = timeLeft;
+    countDown.textContent = timeLeft;
 
     if (timeLeft === 0 || timeLeft < 0) {
       clearInterval(timeInterval);
-      time.textContent = "";
+      countDown.textContent = "";
 
       question1.style.display = "none";
       question2.style.display = "none";
@@ -60,6 +68,15 @@ startQuizBtn.addEventListener("click", function () {
       question5.style.display = "none";
       highscores.style.display = "none";
       allDone.style.display = "flex";
+    } else if (true) {
+      nextQn5.addEventListener("click", function () {
+        clearInterval(timeInterval);
+        countDown.textContent = "";
+      });
+      viewHighscores.addEventListener("click", function () {
+        clearInterval(timeInterval);
+        countDown.textContent = "";
+      });
     }
   }, 1000);
 });
@@ -72,11 +89,25 @@ for (i = 0; i < timeDeduction.length; i++) {
 
 function onClick() {
   timeLeft -= 15;
-  time.textContent = timeLeft;
+  countDown.textContent = timeLeft;
 
   if (timeLeft < 0 || timeLeft === 0) {
-    time.textContent = "";
+    countDown.textContent = "";
   }
+}
+
+for (i = 0; i < nextQn.length; i++) {
+  nextQn[i].addEventListener("click", function () {
+    scoreInt += 5;
+    console.log(scoreInt);
+  });
+}
+
+for (i = 0; i < timeDeduction.length; i++) {
+  timeDeduction[i].addEventListener("click", function () {
+    scoreInt -= 3;
+    console.log(scoreInt);
+  });
 }
 
 nextQn1.addEventListener("click", function () {
@@ -102,41 +133,39 @@ nextQn4.addEventListener("click", function () {
 nextQn5.addEventListener("click", function () {
   question5.style.display = "none";
   allDone.style.display = "block";
+  scoreVal.innerHTML = scoreInt;
+  scorePlayer.innerHTML = scoreInt;
 });
 
 submitBtn.addEventListener("click", function () {
-  localStorage.setItem("initials", userInput.value);
   allDone.style.display = "none";
   header.style.display = "none";
   highscores.style.display = "flex";
-  firstPlace.textContent = localStorage.getItem("initials");
+
+  var listItem = document.createElement("li");
+  listItem.className = "delete";
+  listItem.textContent = userInput.value;
+  scoreList.appendChild(listItem);
+
+  var listItem2 = document.createElement("li");
+  listItem2.className = "delete";
+  listItem2.textContent = scoreInt;
+  pointList.appendChild(listItem2);
+
+  userInput.value = "";
 });
 
 clearScoresBtn.addEventListener("click", function () {
   localStorage.clear();
-  firstPlace.textContent = "";
+
+  while (deleteItem.length > 0) {
+    deleteItem[0].parentNode.removeChild(deleteItem[0]);
+  }
 });
 
 goBackBtn.addEventListener("click", function () {
   header.style.display = "flex";
   homepage.style.display = "block";
   highscores.style.display = "none";
+  scoreInt = 0;
 });
-
-// for (i = 0; i < nextQn.length; i++) {
-//   nextQn[i].addEventListener("click", function () {
-//     scoreVal += 5;
-//     localStorage.setItem("score", scoreVal);
-//     console.log(scoreVal);
-//   });
-// }
-
-// for (i = 0; i < timeDeduction.length; i++) {
-//   timeDeduction[i].addEventListener("click", function () {
-//     scoreVal -= 3;
-//     localStorage.setItem("score", scoreVal);
-//     console.log(scoreVal);
-//   });
-// }
-
-// scoreVal = localStorage.getItem("score");
